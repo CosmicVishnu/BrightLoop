@@ -96,7 +96,7 @@ Brightloop Software provides subscription-based software and enterprise managed 
 
 ### 👤 Staff Member (`staff`)
 - **Management Dashboard**: Filter and inspect overdue invoices by date range, customer, and status.
-- **Catalog Management**: Create and edit Products (Service, License, Support, Goods), configure Variants (e.g., Odoo Brand adds $560.00, Enterprise Tier, 24/7 Support).
+- **Catalog Management**: Create and edit Products (Service, License, Support, Goods), configure Variants (e.g., Odoo Brand adds ₹560.00, Enterprise Tier, 24/7 Support).
 - **Plan Management**: Configure billing cadences (Daily, Weekly, Monthly, Yearly), lifecycle policies (`auto_close`, `closable`, `pausable`, `renewable`), and validity windows.
 - **Quotation Templates**: Create standard bundles with predefined line items and quantities.
 - **Subscription Management**:

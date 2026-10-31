@@ -197,7 +197,7 @@ class Command(BaseCommand):
                 }
             )
             disc2, _ = Discount.objects.get_or_create(
-                name="Welcome Voucher ($100)",
+                name="Welcome Voucher (₹100)",
                 defaults={
                     "type": Discount.TYPE_FIXED,
                     "value": Decimal("100.00"),

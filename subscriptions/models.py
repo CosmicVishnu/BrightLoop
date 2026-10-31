@@ -153,7 +153,7 @@ class SubscriptionLine(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f"{self.product.name} ({self.quantity} x ${self.unit_price})"
+        return f"{self.product.name} ({self.quantity} x ₹{self.unit_price})"
 
     def save(self, *args, **kwargs):
         self.amount = Decimal(str(self.quantity)) * Decimal(str(self.unit_price))

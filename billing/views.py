@@ -132,8 +132,8 @@ def invoice_send_email_view(request, pk):
         f"Invoice Number: {invoice.number}\n"
         f"Subscription: {invoice.subscription.number}\n"
         f"Billing Period: {invoice.period_start} to {invoice.period_end}\n"
-        f"Total Amount: ${invoice.total}\n"
-        f"Outstanding Balance: ${invoice.outstanding_balance}\n"
+        f"Total Amount: ₹{invoice.total}\n"
+        f"Outstanding Balance: ₹{invoice.outstanding_balance}\n"
         f"Due Date: {invoice.due_date}\n\n"
         f"Thank you for choosing Brightloop Software!\n"
     )
@@ -196,9 +196,9 @@ def payment_create_view(request, invoice_pk):
             payment.save()
             invoice.refresh_from_db()
             if invoice.status == Invoice.STATUS_PAID:
-                messages.success(request, f"Payment of ${payment.amount} successful! Invoice {invoice.number} is now Paid in Full.")
+                messages.success(request, f"Payment of ₹{payment.amount} successful! Invoice {invoice.number} is now Paid in Full.")
             else:
-                messages.success(request, f"Payment of ${payment.amount} received. Remaining balance: ${invoice.outstanding_balance}.")
+                messages.success(request, f"Payment of ₹{payment.amount} received. Remaining balance: ₹{invoice.outstanding_balance}.")
         else:
             for err in form.errors.values():
                 messages.error(request, err)

@@ -86,9 +86,9 @@
                                 <span class="badge badge-draft">Draft</span>
                             {% endif %}
                         </td>
-                        <td class="fw-bold">${{ inv.total }}</td>
+                        <td class="fw-bold">₹{{ inv.total }}</td>
                         <td class="fw-bold {% if inv.outstanding_balance > 0 %}text-danger{% endif %}">
-                            ${{ inv.outstanding_balance }}
+                            ₹{{ inv.outstanding_balance }}
                         </td>
                         <td class="text-end">
                             <a href="{% url 'billing:invoice_detail' inv.pk %}" class="btn btn-sm btn-outline-primary">View</a>

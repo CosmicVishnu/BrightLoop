@@ -66,7 +66,7 @@
         <div class="card shadow-sm p-3 bg-white">
             <div class="text-muted small">Plan &amp; Cadence</div>
             <div class="fw-bold">{{ subscription.plan.name }}</div>
-            <small class="text-muted">${{ subscription.plan.price }} / {{ subscription.plan.get_billing_period_display }}</small>
+            <small class="text-muted">₹{{ subscription.plan.price }} / {{ subscription.plan.get_billing_period_display }}</small>
         </div>
     </div>
     <div class="col-md-3">
@@ -139,7 +139,7 @@
                             {% endif %}
                         </td>
                         <td>{{ line.quantity }}</td>
-                        <td>${{ line.unit_price }}</td>
+                        <td>₹{{ line.unit_price }}</td>
                         <td>
                             {% if line.tax %}
                                 <span class="badge bg-secondary">{{ line.tax.name }}</span>
@@ -147,7 +147,7 @@
                                 <span class="text-muted small">None</span>
                             {% endif %}
                         </td>
-                        <td class="text-end fw-bold">${{ line.amount }}</td>
+                        <td class="text-end fw-bold">₹{{ line.amount }}</td>
                         {% if line_form and not is_customer %}
                         <td class="text-end">
                             <form method="post" action="{% url 'subscriptions:subscription_line_delete' subscription.pk line.pk %}" class="d-inline">
@@ -168,7 +168,7 @@
                 <tfoot class="table-light">
                     <tr>
                         <th colspan="5" class="text-end">Recurring Total:</th>
-                        <th class="text-end fs-5">${{ subscription.total_recurring_amount }}</th>
+                        <th class="text-end fs-5">₹{{ subscription.total_recurring_amount }}</th>
                         {% if line_form and not is_customer %}<th></th>{% endif %}
                     </tr>
                 </tfoot>
@@ -223,12 +223,12 @@
                             {{ inv.due_date|date:"M d, Y" }}
                             {% if inv.is_overdue %}<span class="badge badge-overdue ms-1">Overdue</span>{% endif %}
                         </td>
-                        <td>${{ inv.subtotal }}</td>
-                        <td class="text-danger">{% if inv.discount_amount > 0 %}-${{ inv.discount_amount }}{% else %}$0.00{% endif %}</td>
-                        <td>+${{ inv.tax_amount }}</td>
-                        <td class="fw-bold">${{ inv.total }}</td>
+                        <td>₹{{ inv.subtotal }}</td>
+                        <td class="text-danger">{% if inv.discount_amount > 0 %}-₹{{ inv.discount_amount }}{% else %}₹0.00{% endif %}</td>
+                        <td>+₹{{ inv.tax_amount }}</td>
+                        <td class="fw-bold">₹{{ inv.total }}</td>
                         <td class="fw-bold {% if inv.outstanding_balance > 0 %}text-danger{% endif %}">
-                            ${{ inv.outstanding_balance }}
+                            ₹{{ inv.outstanding_balance }}
                         </td>
                         <td class="text-end">
                             <a href="{% url 'billing:invoice_detail' inv.pk %}" class="btn btn-sm btn-outline-primary">View</a>
@@ -271,7 +271,7 @@
                             {{ line_form.quantity }}
                         </div>
                         <div class="col-6">
-                            <label class="form-label fw-semibold">Unit Price ($)</label>
+                            <label class="form-label fw-semibold">Unit Price (₹)</label>
                             {{ line_form.unit_price }}
                         </div>
                     </div>

@@ -43,14 +43,14 @@
                             {% endif %}
                         </td>
                         <td><span class="badge bg-secondary">{{ product.get_type_display }}</span></td>
-                        <td class="fw-semibold text-primary">${{ product.sales_price }}</td>
-                        <td class="text-muted">${{ product.cost_price }}</td>
+                        <td class="fw-semibold text-primary">₹{{ product.sales_price }}</td>
+                        <td class="text-muted">₹{{ product.cost_price }}</td>
                         <td>
                             {% if product.variants.all %}
                                 <div class="d-flex flex-wrap gap-1">
                                     {% for v in product.variants.all %}
                                         <span class="badge bg-light text-dark border">
-                                            {{ v.attribute }}: {{ v.value }} (+${{ v.extra_price }})
+                                            {{ v.attribute }}: {{ v.value }} (+₹{{ v.extra_price }})
                                             <form method="post" action="{% url 'catalog:variant_delete' v.pk %}" class="d-inline" onsubmit="return confirm('Remove this variant?');">
                                                 {% csrf_token %}
                                                 <button type="submit" class="btn-close ms-1" style="font-size: 0.55rem;" aria-label="Delete"></button>
@@ -116,7 +116,7 @@
                         <div class="form-text">e.g. Odoo, Enterprise, Pro</div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Extra Price ($)</label>
+                        <label class="form-label fw-semibold">Extra Price (₹)</label>
                         {{ variant_form.extra_price }}
                         <div class="form-text">Amount added to product's base price (e.g. 560.00)</div>
                     </div>

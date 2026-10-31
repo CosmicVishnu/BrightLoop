@@ -21,7 +21,7 @@ class Product(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return f"{self.name} (${self.sales_price})"
+        return f"{self.name} (₹{self.sales_price})"
 
 
 class Variant(models.Model):
@@ -36,7 +36,7 @@ class Variant(models.Model):
 
     def __str__(self):
         sign = "+" if self.extra_price >= 0 else "-"
-        return f"{self.product.name} - {self.attribute}: {self.value} ({sign}${abs(self.extra_price)})"
+        return f"{self.product.name} - {self.attribute}: {self.value} ({sign}₹{abs(self.extra_price)})"
 
     @property
     def total_unit_price(self):
@@ -71,7 +71,7 @@ class Plan(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return f"{self.name} (${self.price}/{self.get_billing_period_display()})"
+        return f"{self.name} (₹{self.price}/{self.get_billing_period_display()})"
 
 
 class Tax(models.Model):
@@ -92,7 +92,7 @@ class Discount(models.Model):
     TYPE_PERCENTAGE = 'percentage'
 
     TYPE_CHOICES = [
-        (TYPE_FIXED, 'Fixed Amount ($)'),
+        (TYPE_FIXED, 'Fixed Amount (₹)'),
         (TYPE_PERCENTAGE, 'Percentage (%)'),
     ]
 
@@ -115,7 +115,7 @@ class Discount(models.Model):
         if self.type == self.TYPE_PERCENTAGE:
             val_str = f"{self.value}%"
         else:
-            val_str = f"${self.value}"
+            val_str = f"₹{self.value}"
         return f"{self.name} ({val_str} off)"
 
     def is_currently_valid(self, for_date=None):

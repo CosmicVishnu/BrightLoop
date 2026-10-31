@@ -24,14 +24,14 @@
                             {{ form.type }}
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Sales Price ($) *</label>
+                            <label class="form-label fw-semibold">Sales Price (₹) *</label>
                             {{ form.sales_price }}
                             {% if form.sales_price.errors %}<div class="text-danger small">{{ form.sales_price.errors.0 }}</div>{% endif %}
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Cost Price ($)</label>
+                            <label class="form-label fw-semibold">Cost Price (₹)</label>
                             {{ form.cost_price }}
                         </div>
                         <div class="col-md-6 d-flex align-items-center pt-4">

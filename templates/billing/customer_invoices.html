@@ -18,14 +18,14 @@
     <div class="col-md-4">
         <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Total Outstanding</div>
-            <div class="h3 fw-bold text-danger mb-0 mt-1">${{ total_outstanding }}</div>
+            <div class="h3 fw-bold text-danger mb-0 mt-1">₹{{ total_outstanding }}</div>
             <small class="text-muted">Unpaid invoice balance</small>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Total Paid</div>
-            <div class="h3 fw-bold mb-0 mt-1">${{ total_paid }}</div>
+            <div class="h3 fw-bold mb-0 mt-1">₹{{ total_paid }}</div>
             <small class="text-muted">Lifetime settled payments</small>
         </div>
     </div>
@@ -117,9 +117,9 @@
                                 <span class="badge badge-overdue ms-1">Overdue</span>
                             {% endif %}
                         </td>
-                        <td class="fw-bold">${{ inv.total }}</td>
+                        <td class="fw-bold">₹{{ inv.total }}</td>
                         <td class="fw-bold {% if inv.outstanding_balance > 0 %}text-danger{% endif %}">
-                            ${{ inv.outstanding_balance }}
+                            ₹{{ inv.outstanding_balance }}
                         </td>
                         <td class="text-end">
                             <div class="btn-group btn-group-sm">

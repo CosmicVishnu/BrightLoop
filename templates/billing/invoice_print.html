@@ -107,7 +107,7 @@
                             {% endif %}
                         </td>
                         <td class="text-center">{{ line.quantity }}</td>
-                        <td class="text-end">${{ line.unit_price }}</td>
+                        <td class="text-end">₹{{ line.unit_price }}</td>
                         <td class="text-end">
                             {% if line.tax %}
                                 {{ line.tax.percentage }}%
@@ -115,7 +115,7 @@
                                 0%
                             {% endif %}
                         </td>
-                        <td class="text-end fw-bold">${{ line.amount }}</td>
+                        <td class="text-end fw-bold">₹{{ line.amount }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -127,29 +127,29 @@
                     <table class="table table-sm table-borderless">
                         <tr>
                             <td class="text-muted">Subtotal:</td>
-                            <td class="text-end fw-semibold">${{ invoice.subtotal }}</td>
+                            <td class="text-end fw-semibold">₹{{ invoice.subtotal }}</td>
                         </tr>
                         {% if invoice.discount_amount > 0 %}
                         <tr>
                             <td class="text-muted">Discount Applied:</td>
-                            <td class="text-end text-danger fw-semibold">-${{ invoice.discount_amount }}</td>
+                            <td class="text-end text-danger fw-semibold">-₹{{ invoice.discount_amount }}</td>
                         </tr>
                         {% endif %}
                         <tr>
                             <td class="text-muted">Total Tax:</td>
-                            <td class="text-end fw-semibold">+${{ invoice.tax_amount }}</td>
+                            <td class="text-end fw-semibold">+₹{{ invoice.tax_amount }}</td>
                         </tr>
                         <tr class="border-top">
                             <td class="fw-bold fs-6">Grand Total:</td>
-                            <td class="text-end fw-bold fs-6 text-primary">${{ invoice.total }}</td>
+                            <td class="text-end fw-bold fs-6 text-primary">₹{{ invoice.total }}</td>
                         </tr>
                         <tr>
                             <td class="text-muted">Amount Paid:</td>
-                            <td class="text-end text-success fw-semibold">-${{ invoice.total_paid }}</td>
+                            <td class="text-end text-success fw-semibold">-₹{{ invoice.total_paid }}</td>
                         </tr>
                         <tr class="border-top">
                             <td class="fw-bold">Balance Due:</td>
-                            <td class="text-end fw-bold fs-6 text-danger">${{ invoice.outstanding_balance }}</td>
+                            <td class="text-end fw-bold fs-6 text-danger">₹{{ invoice.outstanding_balance }}</td>
                         </tr>
                     </table>
                 </div>
@@ -162,7 +162,7 @@
                 <ul class="list-unstyled small mb-0">
                     {% for p in invoice.payments.all %}
                     <li>
-                        Received <strong>${{ p.amount }}</strong> via {{ p.get_method_display }} on {{ p.date|date:"M d, Y" }}
+                        Received <strong>₹{{ p.amount }}</strong> via {{ p.get_method_display }} on {{ p.date|date:"M d, Y" }}
                         {% if p.note %}({{ p.note }}){% endif %}
                     </li>
                     {% endfor %}

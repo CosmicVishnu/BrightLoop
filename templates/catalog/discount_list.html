@@ -39,11 +39,11 @@
                             {% if discount.type == 'percentage' %}
                                 <span class="badge bg-success fs-6">{{ discount.value }}% OFF</span>
                             {% else %}
-                                <span class="badge bg-primary fs-6">${{ discount.value }} OFF</span>
+                                <span class="badge bg-primary fs-6">₹{{ discount.value }} OFF</span>
                             {% endif %}
                         </td>
                         <td class="small">
-                            {% if discount.min_purchase > 0 %}Min: ${{ discount.min_purchase }}<br>{% endif %}
+                            {% if discount.min_purchase > 0 %}Min: ₹{{ discount.min_purchase }}<br>{% endif %}
                             {% if discount.min_quantity > 0 %}Min Qty: {{ discount.min_quantity }}{% endif %}
                             {% if discount.min_purchase == 0 and discount.min_quantity == 0 %}<span class="text-muted">None</span>{% endif %}
                         </td>

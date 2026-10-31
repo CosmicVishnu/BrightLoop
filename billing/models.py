@@ -54,7 +54,7 @@ class Invoice(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.number} - {self.customer.email} (${self.total}) [{self.status}]"
+        return f"{self.number} - {self.customer.email} (₹{self.total}) [{self.status}]"
 
     def save(self, *args, **kwargs):
         if not self.number:
@@ -107,7 +107,7 @@ class InvoiceLine(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return f"{self.product.name} ({self.quantity} x ${self.unit_price})"
+        return f"{self.product.name} ({self.quantity} x ₹{self.unit_price})"
 
 
 class Payment(models.Model):
@@ -129,7 +129,7 @@ class Payment(models.Model):
         ordering = ['-date', '-id']
 
     def __str__(self):
-        return f"Payment {self.id} for {self.invoice.number} - ${self.amount} via {self.get_method_display()}"
+        return f"Payment {self.id} for {self.invoice.number} - ₹{self.amount} via {self.get_method_display()}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

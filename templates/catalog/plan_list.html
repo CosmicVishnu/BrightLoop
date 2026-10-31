@@ -32,7 +32,7 @@
                     {% for plan in plans %}
                     <tr>
                         <td class="fw-semibold">{{ plan.name }}</td>
-                        <td class="fw-bold text-primary">${{ plan.price }}</td>
+                        <td class="fw-bold text-primary">₹{{ plan.price }}</td>
                         <td><span class="badge bg-info text-dark">{{ plan.get_billing_period_display }}</span></td>
                         <td>{{ plan.min_quantity }}</td>
                         <td class="small">

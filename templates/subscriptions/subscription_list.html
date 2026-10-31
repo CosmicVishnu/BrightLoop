@@ -87,7 +87,7 @@
                         </td>
                         <td>{{ sub.start_date|date:"M d, Y" }}</td>
                         <td>{{ sub.next_billing_date|date:"M d, Y"|default:"-" }}</td>
-                        <td class="fw-bold">${{ sub.total_recurring_amount }}</td>
+                        <td class="fw-bold">₹{{ sub.total_recurring_amount }}</td>
                         <td class="text-end">
                             <a href="{% url 'subscriptions:subscription_detail' sub.pk %}" class="btn btn-sm btn-outline-primary">
                                 View

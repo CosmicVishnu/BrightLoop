@@ -30,7 +30,7 @@
     <div class="col">
         <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Revenue Collected</div>
-            <div class="h3 fw-bold mb-0 mt-1">${{ total_revenue_collected }}</div>
+            <div class="h3 fw-bold mb-0 mt-1">₹{{ total_revenue_collected }}</div>
             <small class="text-muted">Total cash receipts</small>
         </div>
     </div>
@@ -44,7 +44,7 @@
     <div class="col">
         <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Outstanding</div>
-            <div class="h3 fw-bold text-danger mb-0 mt-1">${{ total_outstanding }}</div>
+            <div class="h3 fw-bold text-danger mb-0 mt-1">₹{{ total_outstanding }}</div>
             <small class="text-muted">Uncollected receivables</small>
         </div>
     </div>
@@ -152,8 +152,8 @@
                                 <span class="badge badge-draft">Draft</span>
                             {% endif %}
                         </td>
-                        <td>${{ inv.total }}</td>
-                        <td class="fw-bold text-danger">${{ inv.outstanding_balance }}</td>
+                        <td>₹{{ inv.total }}</td>
+                        <td class="fw-bold text-danger">₹{{ inv.outstanding_balance }}</td>
                         <td class="text-end">
                             <a href="{% url 'billing:invoice_detail' inv.pk %}" class="btn btn-sm btn-outline-danger">
                                 View &amp; Collect

@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=150)),
-                ('type', models.CharField(choices=[('fixed', 'Fixed Amount ($)'), ('percentage', 'Percentage (%)')], default='percentage', max_length=20)),
+                ('type', models.CharField(choices=[('fixed', 'Fixed Amount (₹)'), ('percentage', 'Percentage (%)')], default='percentage', max_length=20)),
                 ('value', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('min_purchase', models.DecimalField(decimal_places=2, default=0.0, max_digits=10)),
                 ('min_quantity', models.PositiveIntegerField(default=0)),
