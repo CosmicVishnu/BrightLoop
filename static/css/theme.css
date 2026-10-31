@@ -1,0 +1,780 @@
+/* ==========================================================================
+   Brightloop Software - Theme Stylesheet
+   Palette:
+     - Primary Violet:     #7C3AED
+     - Secondary Teal:     #14B8A6
+     - Accent Coral:       #FB7185
+     - Highlight Amber:    #F59E0B
+     - Success Emerald:    #10B981
+     - Danger Rose:        #F43F5E
+     - Page Background:    #F5F3FF
+     - Body Text Deep Plum:#3B0764
+     - Muted Text:         #7C6A9C
+     - Lavender Light:     #EDE9FE
+     - Lavender Border:    #DDD6FE
+   No black or dark blue anywhere in the UI.
+   ========================================================================== */
+
+:root {
+    --bl-violet: #7C3AED;
+    --bl-violet-hover: #6D28D9;
+    --bl-teal: #14B8A6;
+    --bl-teal-dark: #0F766E;
+    --bl-coral: #FB7185;
+    --bl-amber: #F59E0B;
+    --bl-amber-dark: #B45309;
+    --bl-emerald: #10B981;
+    --bl-emerald-dark: #047857;
+    --bl-rose: #F43F5E;
+    --bl-rose-dark: #BE123C;
+    --bl-page-bg: #F5F3FF;
+    --bl-plum: #3B0764;
+    --bl-muted: #7C6A9C;
+    --bl-lavender-light: #EDE9FE;
+    --bl-lavender-border: #DDD6FE;
+    --bl-lavender-hover: #F3E8FF;
+    --bl-pink: #EC4899;
+
+    /* Override Bootstrap 5 theme variables */
+    --bs-primary: #7C3AED;
+    --bs-primary-rgb: 124, 58, 237;
+    --bs-secondary: #14B8A6;
+    --bs-secondary-rgb: 20, 184, 166;
+    --bs-success: #10B981;
+    --bs-success-rgb: 16, 185, 129;
+    --bs-info: #14B8A6;
+    --bs-info-rgb: 20, 184, 166;
+    --bs-warning: #F59E0B;
+    --bs-warning-rgb: 245, 158, 11;
+    --bs-danger: #F43F5E;
+    --bs-danger-rgb: 244, 63, 94;
+    --bs-light: #EDE9FE;
+    --bs-light-rgb: 237, 233, 254;
+    --bs-dark: #3B0764; /* Overrides dark to deep plum: NO black/dark blue */
+    --bs-dark-rgb: 59, 7, 100;
+
+    --bs-body-bg: #F5F3FF;
+    --bs-body-color: #3B0764;
+    --bs-body-color-rgb: 59, 7, 100;
+    --bs-link-color: #7C3AED;
+    --bs-link-hover-color: #6D28D9;
+    --bs-border-color: #DDD6FE;
+    --bs-secondary-color: #7C6A9C;
+}
+
+/* Base Document */
+body {
+    background-color: var(--bl-page-bg) !important;
+    color: var(--bl-plum) !important;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: var(--bl-plum) !important;
+    font-weight: 700;
+}
+
+.text-dark {
+    color: var(--bl-plum) !important;
+}
+
+.text-muted {
+    color: var(--bl-muted) !important;
+}
+
+.text-primary {
+    color: var(--bl-violet) !important;
+}
+
+.text-secondary {
+    color: var(--bl-teal) !important;
+}
+
+.text-success {
+    color: var(--bl-emerald) !important;
+}
+
+.text-danger {
+    color: var(--bl-rose) !important;
+}
+
+.text-warning {
+    color: var(--bl-amber) !important;
+}
+
+.text-info {
+    color: var(--bl-teal) !important;
+}
+
+code {
+    color: var(--bl-violet);
+    background-color: var(--bl-lavender-light);
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    font-size: 0.88em;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.navbar-brightloop {
+    background: linear-gradient(90deg, #7C3AED 0%, #EC4899 100%) !important;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.22) !important;
+    border-bottom: none !important;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+}
+
+.navbar-brightloop .navbar-brand {
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    font-size: 1.28rem;
+    letter-spacing: -0.5px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar-brightloop .navbar-brand i {
+    color: #FFFFFF !important;
+}
+
+.navbar-brightloop .nav-link {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-weight: 500;
+    font-size: 0.94rem;
+    border-radius: 8px;
+    padding: 0.45rem 0.8rem !important;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navbar-brightloop .nav-link:hover,
+.navbar-brightloop .nav-link:focus,
+.navbar-brightloop .nav-link.active {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.navbar-brightloop .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 10px;
+}
+
+.navbar-brightloop .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+.navbar-brightloop .dropdown-menu {
+    border-radius: 14px;
+    border: 1px solid var(--bl-lavender-border);
+    box-shadow: 0 10px 28px rgba(124, 58, 237, 0.12);
+    padding: 0.5rem;
+    background-color: #FFFFFF;
+}
+
+.navbar-brightloop .dropdown-item {
+    border-radius: 8px;
+    color: var(--bl-plum);
+    font-weight: 500;
+    padding: 0.45rem 0.85rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navbar-brightloop .dropdown-item:hover,
+.navbar-brightloop .dropdown-item:focus {
+    background-color: var(--bl-lavender-hover);
+    color: var(--bl-violet);
+}
+
+.navbar-brightloop .dropdown-header {
+    color: var(--bl-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.navbar-brightloop .dropdown-divider {
+    border-top: 1px solid var(--bl-lavender-light);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+    background-color: var(--bl-lavender-light) !important;
+    color: var(--bl-plum) !important;
+    border-top: 1px solid var(--bl-lavender-border) !important;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+    border-radius: 12px !important;
+    font-weight: 600;
+    padding: 0.5rem 1.15rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn-sm {
+    border-radius: 10px !important;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.28) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: linear-gradient(135deg, #6D28D9 0%, #7E22CE 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.38) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-outline-primary {
+    color: var(--bl-violet) !important;
+    border: 1.5px solid var(--bl-violet) !important;
+    background: transparent !important;
+    box-shadow: 0 2px 6px rgba(124, 58, 237, 0.08) !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background: var(--bl-violet) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.28) !important;
+}
+
+.btn-outline-secondary {
+    color: var(--bl-muted) !important;
+    border: 1.5px solid var(--bl-lavender-border) !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 2px 6px rgba(124, 58, 237, 0.05) !important;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+    background: var(--bl-lavender-light) !important;
+    color: var(--bl-plum) !important;
+    border-color: #C4B5FD !important;
+    transform: translateY(-1px);
+}
+
+.btn-outline-light {
+    color: #FFFFFF !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.25) !important;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #F43F5E 0%, #E11D48 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(244, 63, 94, 0.25) !important;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(244, 63, 94, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.25) !important;
+}
+
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(245, 158, 11, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(20, 184, 166, 0.25) !important;
+}
+
+.btn-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(20, 184, 166, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   Cards & KPI Tiles
+   ========================================================================== */
+.card {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E9D5FF !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 18px rgba(124, 58, 237, 0.05) !important;
+    color: var(--bl-plum);
+}
+
+.card-header {
+    background-color: #FAF5FF !important;
+    border-bottom: 1px solid var(--bl-lavender-border) !important;
+    color: var(--bl-plum) !important;
+    font-weight: 700;
+}
+
+.card-footer {
+    background-color: #FAF5FF !important;
+    border-top: 1px solid var(--bl-lavender-border) !important;
+    color: var(--bl-muted) !important;
+}
+
+/* KPI Tiles on Customer Portal and Finance Dashboard */
+.card.border-start, .kpi-card {
+    background: #FFFFFF !important;
+    border-radius: 16px !important;
+    border-top: 1px solid #EDE9FE !important;
+    border-right: 1px solid #EDE9FE !important;
+    border-bottom: 1px solid #EDE9FE !important;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.06) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card.border-start:hover, .kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 26px rgba(124, 58, 237, 0.12) !important;
+}
+
+/* 5 Distinct Thick Borders: Violet, Teal, Coral, Amber, Emerald */
+.border-start.border-primary, .kpi-violet {
+    border-left: 6px solid var(--bl-violet) !important;
+}
+
+.border-start.border-info, .kpi-teal {
+    border-left: 6px solid var(--bl-teal) !important;
+}
+
+.border-start.border-danger, .kpi-coral {
+    border-left: 6px solid var(--bl-coral) !important;
+}
+
+.border-start.border-warning, .border-start.border-secondary, .kpi-amber {
+    border-left: 6px solid var(--bl-amber) !important;
+}
+
+.border-start.border-success, .kpi-emerald {
+    border-left: 6px solid var(--bl-emerald) !important;
+}
+
+/* Large Bold KPI Numbers */
+.card.border-start .h3,
+.kpi-card .h3,
+.kpi-number {
+    font-size: 2.15rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+    margin-top: 0.25rem;
+    margin-bottom: 0.15rem;
+}
+
+/* Subtle icon backgrounds inside KPI tiles */
+.bg-primary-subtle {
+    background-color: #EDE9FE !important;
+    color: var(--bl-violet) !important;
+}
+
+.bg-success-subtle {
+    background-color: #D1FAE5 !important;
+    color: var(--bl-emerald-dark) !important;
+}
+
+.bg-info-subtle {
+    background-color: #CCFBF1 !important;
+    color: var(--bl-teal-dark) !important;
+}
+
+.bg-warning-subtle {
+    background-color: #FEF3C7 !important;
+    color: var(--bl-amber-dark) !important;
+}
+
+.bg-danger-subtle {
+    background-color: #FFE4E6 !important;
+    color: var(--bl-rose-dark) !important;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+.table {
+    color: var(--bl-plum) !important;
+    margin-bottom: 0;
+}
+
+.table-responsive {
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--bl-lavender-border) !important;
+    background-color: #FFFFFF;
+}
+
+/* Lavender Header Row with Plum Text */
+.table thead th,
+.table-light,
+thead.table-light th {
+    background-color: var(--bl-lavender-light) !important;
+    color: var(--bl-plum) !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--bl-lavender-border) !important;
+    padding: 0.9rem 1rem !important;
+}
+
+/* Zebra Striping */
+.table > tbody > tr:nth-of-type(odd) > * {
+    background-color: #FAF5FF !important;
+    color: var(--bl-plum) !important;
+}
+
+.table > tbody > tr:nth-of-type(even) > * {
+    background-color: #FFFFFF !important;
+    color: var(--bl-plum) !important;
+}
+
+/* Row Hover Highlight */
+.table-hover > tbody > tr:hover > * {
+    background-color: var(--bl-lavender-hover) !important;
+    color: var(--bl-plum) !important;
+}
+
+.table td {
+    padding: 0.9rem 1rem !important;
+    border-color: #EDE9FE !important;
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   Status Badges (Soft Pills)
+   ========================================================================== */
+.badge {
+    border-radius: 9999px !important;
+    font-weight: 600 !important;
+    padding: 0.4em 0.9em !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.3px;
+    border: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Role Badges in Navbar */
+.badge-role {
+    font-size: 0.72rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.3em 0.7em !important;
+}
+
+/* Status: Draft (Grey-Lavender) */
+.badge.bg-light,
+.badge.bg-light.text-dark,
+.badge-draft {
+    background-color: #EDE9FE !important;
+    color: #6D28D9 !important;
+}
+
+/* Status: Quotation (Amber) */
+.badge-quotation,
+.badge.bg-info.text-dark {
+    background-color: #FEF3C7 !important;
+    color: #B45309 !important;
+}
+
+/* Status: Confirmed (Teal) */
+.badge-confirmed,
+.badge.bg-primary {
+    background-color: #CCFBF1 !important;
+    color: #0F766E !important;
+}
+
+/* Status: Active (Emerald) */
+.badge-active,
+.badge.bg-success {
+    background-color: #D1FAE5 !important;
+    color: #047857 !important;
+}
+
+/* Status: Paused (Coral) */
+.badge-paused,
+.badge.bg-warning.text-dark,
+.badge.bg-warning {
+    background-color: #FFE4E6 !important;
+    color: #BE123C !important;
+}
+
+/* Status: Closed (Muted Violet) */
+.badge-closed,
+.badge.bg-secondary {
+    background-color: #DDD6FE !important;
+    color: #5B21B6 !important;
+}
+
+/* Status: Paid (Emerald) */
+.badge-paid {
+    background-color: #D1FAE5 !important;
+    color: #047857 !important;
+}
+
+/* Status: Overdue (Rose) */
+.badge-overdue,
+.badge.bg-danger {
+    background-color: #FFE4E6 !important;
+    color: #E11D48 !important;
+    font-weight: 700 !important;
+}
+
+/* Status: Cancelled (Grey) */
+.badge-cancelled,
+.badge.bg-dark {
+    background-color: #F1F5F9 !important;
+    color: #64748B !important;
+}
+
+/* Preserve specific badge role colors in navbar */
+.navbar .badge.bg-danger {
+    background: #F43F5E !important;
+    color: #FFFFFF !important;
+}
+.navbar .badge.bg-info {
+    background: #14B8A6 !important;
+    color: #FFFFFF !important;
+}
+.navbar .badge.bg-primary {
+    background: #7C3AED !important;
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.form-control,
+.form-select {
+    border-radius: 10px !important;
+    border: 1.5px solid var(--bl-lavender-border) !important;
+    color: var(--bl-plum) !important;
+    background-color: #FFFFFF !important;
+    padding: 0.55rem 0.85rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--bl-violet) !important;
+    box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.2) !important;
+    outline: none !important;
+    color: var(--bl-plum) !important;
+}
+
+.form-control::placeholder {
+    color: #A797BD;
+}
+
+.form-label {
+    font-weight: 600 !important;
+    color: var(--bl-plum) !important;
+    margin-bottom: 0.35rem;
+    font-size: 0.92rem;
+}
+
+.form-text {
+    color: var(--bl-muted) !important;
+}
+
+.form-check-input {
+    border-color: var(--bl-lavender-border) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--bl-violet) !important;
+    border-color: var(--bl-violet) !important;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.2) !important;
+}
+
+/* ==========================================================================
+   Login & Signup Auth Pages
+   ========================================================================== */
+.auth-page-bg {
+    background: linear-gradient(135deg, #F5F3FF 0%, #FCE7F3 50%, #EDE9FE 100%) !important;
+    min-height: calc(100vh - 130px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+}
+
+.auth-card {
+    border-radius: 20px !important;
+    border: 1px solid var(--bl-lavender-border) !important;
+    box-shadow: 0 16px 40px rgba(124, 58, 237, 0.14) !important;
+    background: #FFFFFF !important;
+    overflow: hidden;
+}
+
+.auth-card .card-header {
+    background: linear-gradient(90deg, #7C3AED 0%, #EC4899 100%) !important;
+    color: #FFFFFF !important;
+    border-bottom: none !important;
+    padding: 1.5rem 1rem !important;
+}
+
+.auth-card .card-header h4,
+.auth-card .card-header small {
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   Empty States
+   ========================================================================== */
+.empty-state {
+    padding: 3rem 1.5rem !important;
+    text-align: center;
+}
+
+.empty-state i {
+    color: var(--bl-violet) !important;
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+}
+
+.empty-state h5 {
+    color: var(--bl-plum) !important;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.empty-state p {
+    color: var(--bl-muted) !important;
+    font-size: 0.92rem;
+}
+
+/* ==========================================================================
+   Alerts & Notifications
+   ========================================================================== */
+.alert {
+    border-radius: 12px !important;
+    font-weight: 500;
+}
+
+.alert-primary {
+    background-color: #EDE9FE !important;
+    border-color: #DDD6FE !important;
+    color: #5B21B6 !important;
+}
+
+.alert-success {
+    background-color: #D1FAE5 !important;
+    border-color: #A7F3D0 !important;
+    color: #065F46 !important;
+}
+
+.alert-danger {
+    background-color: #FFE4E6 !important;
+    border-color: #FECDD3 !important;
+    color: #9F1239 !important;
+}
+
+.alert-warning {
+    background-color: #FEF3C7 !important;
+    border-color: #FDE68A !important;
+    color: #92400E !important;
+}
+
+.alert-info {
+    background-color: #CCFBF1 !important;
+    border-color: #99F6E4 !important;
+    color: #115E59 !important;
+}
+
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
+.pagination .page-link {
+    color: var(--bl-violet) !important;
+    border-color: var(--bl-lavender-border) !important;
+    border-radius: 8px !important;
+    margin: 0 2px;
+    font-weight: 600;
+    background-color: #FFFFFF;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--bl-lavender-light) !important;
+    border-color: #C4B5FD !important;
+    color: var(--bl-violet-hover) !important;
+}
+
+.pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%) !important;
+    border-color: var(--bl-violet) !important;
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   Print Overrides
+   ========================================================================== */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    body {
+        background: white !important;
+        color: #3B0764 !important;
+    }
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .invoice-box {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+}

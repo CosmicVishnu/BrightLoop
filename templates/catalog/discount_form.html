@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Brightloop Software{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h4 class="mb-0 fw-bold">{{ title }}</h4>
+                <a href="{% url 'catalog:discount_list' %}" class="btn btn-outline-secondary btn-sm">&larr; Back to Discounts</a>
+            </div>
+            <div class="card-body p-4">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Discount Name *</label>
+                        {{ form.name }}
+                        {% if form.name.errors %}<div class="text-danger small">{{ form.name.errors.0 }}</div>{% endif %}
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Discount Type</label>
+                            {{ form.type }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Value * (Amount or %)</label>
+                            {{ form.value }}
+                            {% if form.value.errors %}<div class="text-danger small">{{ form.value.errors.0 }}</div>{% endif %}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Minimum Purchase ($)</label>
+                            {{ form.min_purchase }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Minimum Item Quantity</label>
+                            {{ form.min_quantity }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Start Date</label>
+                            {{ form.start_date }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">End Date</label>
+                            {{ form.end_date }}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Usage Limit</label>
+                        {{ form.usage_limit }}
+                        <div class="form-text small">Maximum total redemptions permitted. Leave empty for unlimited.</div>
+                    </div>
+                    <hr class="my-4">
+                    <h5 class="fw-semibold mb-3">Applicability Scope</h5>
+                    <div class="form-check mb-3">
+                        {{ form.applies_to_whole_subscription }}
+                        <label class="form-check-label fw-semibold" for="{{ form.applies_to_whole_subscription.id_for_label }}">
+                            Applies to Whole Subscription
+                        </label>
+                        <div class="form-text small">If unchecked, select the specific qualifying products below.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Qualifying Products (if not whole subscription)</label>
+                        {{ form.products }}
+                    </div>
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a href="{% url 'catalog:discount_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary fw-semibold">Save Discount</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

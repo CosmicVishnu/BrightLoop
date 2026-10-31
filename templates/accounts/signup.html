@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Signup - Brightloop Software{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper my-2">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+            <div class="card shadow-lg border-0 auth-card">
+                <div class="card-header text-white text-center py-4" style="background: linear-gradient(90deg, #7C3AED 0%, #EC4899 100%); border-bottom: none;">
+                    <div class="mb-2"><i class="bi bi-person-plus-fill fs-2 text-white"></i></div>
+                    <h4 class="mb-0 fw-bold text-white">Customer Registration</h4>
+                    <small class="text-white-50">Create your Brightloop customer account</small>
+                </div>
+                <div class="card-body p-4 bg-white">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger py-2">
+                                {% for error in form.non_field_errors %}
+                                    <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">First Name *</label>
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                    <div class="text-danger small mt-1">{{ form.first_name.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Last Name *</label>
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                    <div class="text-danger small mt-1">{{ form.last_name.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email Address *</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Company Name</label>
+                            {{ form.company_name }}
+                            {% if form.company_name.errors %}
+                                <div class="text-danger small mt-1">{{ form.company_name.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Password *</label>
+                            {{ form.password }}
+                            <div class="form-text small" style="color: #7C6A9C;">
+                                Must be <strong>more than 8 characters</strong> and include at least <strong>1 uppercase</strong>, <strong>1 lowercase</strong>, and <strong>1 special character</strong>.
+                            </div>
+                            {% if form.password.errors %}
+                                <div class="text-danger small mt-1">{{ form.password.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Confirm Password *</label>
+                            {{ form.confirm_password }}
+                            {% if form.confirm_password.errors %}
+                                <div class="text-danger small mt-1">{{ form.confirm_password.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary fw-semibold py-2">Complete Registration</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center py-3 small" style="background-color: #FAF5FF; color: #7C6A9C;">
+                    Already have an account? <a href="{% url 'accounts:login' %}" class="fw-semibold text-primary">Sign in here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

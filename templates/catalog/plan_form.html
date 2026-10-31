@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Brightloop Software{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h4 class="mb-0 fw-bold">{{ title }}</h4>
+                <a href="{% url 'catalog:plan_list' %}" class="btn btn-outline-secondary btn-sm">&larr; Back to Plans</a>
+            </div>
+            <div class="card-body p-4">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label class="form-label fw-semibold">Plan Name *</label>
+                            {{ form.name }}
+                            {% if form.name.errors %}<div class="text-danger small">{{ form.name.errors.0 }}</div>{% endif %}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">Price ($) *</label>
+                            {{ form.price }}
+                            {% if form.price.errors %}<div class="text-danger small">{{ form.price.errors.0 }}</div>{% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Billing Period</label>
+                            {{ form.billing_period }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Minimum Quantity</label>
+                            {{ form.min_quantity }}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Start Date</label>
+                            {{ form.start_date }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">End Date (optional)</label>
+                            {{ form.end_date }}
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <h5 class="fw-semibold mb-3">Lifecycle &amp; Rules</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                {{ form.auto_close }}
+                                <label class="form-check-label fw-semibold" for="{{ form.auto_close.id_for_label }}">
+                                    Auto Close
+                                </label>
+                                <div class="form-text small">Automatically terminate subscriptions past plan end date</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                {{ form.closable }}
+                                <label class="form-check-label fw-semibold" for="{{ form.closable.id_for_label }}">
+                                    Allow Early Close
+                                </label>
+                                <div class="form-text small">Display Close button to end subscription ahead of time</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                {{ form.pausable }}
+                                <label class="form-check-label fw-semibold" for="{{ form.pausable.id_for_label }}">
+                                    Allow Pause
+                                </label>
+                                <div class="form-text small">Display Pause / Resume buttons on active subscriptions</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                {{ form.renewable }}
+                                <label class="form-check-label fw-semibold" for="{{ form.renewable.id_for_label }}">
+                                    Allow Renew
+                                </label>
+                                <div class="form-text small">Display Renew button on closed/expired subscriptions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a href="{% url 'catalog:plan_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary fw-semibold">Save Plan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
