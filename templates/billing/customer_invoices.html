@@ -13,48 +13,27 @@
     </a>
 </div>
 
-<!-- Summary Cards -->
+<!-- Summary Cards: Identical Neutral Cards -->
 <div class="row g-3 mb-4">
     <div class="col-md-4">
-        <div class="card shadow-sm border-0 border-start border-4 border-danger p-3 bg-white kpi-card kpi-coral">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="text-muted small text-uppercase fw-semibold">Total Outstanding</div>
-                    <div class="h3 fw-bold text-danger mb-0">${{ total_outstanding }}</div>
-                    <small class="text-muted">Unpaid invoice balance</small>
-                </div>
-                <div class="bg-danger-subtle p-3 rounded-circle text-danger">
-                    <i class="bi bi-exclamation-circle-fill fs-4"></i>
-                </div>
-            </div>
+        <div class="card p-3 h-100">
+            <div class="text-muted small text-uppercase fw-semibold">Total Outstanding</div>
+            <div class="h3 fw-bold text-danger mb-0 mt-1">${{ total_outstanding }}</div>
+            <small class="text-muted">Unpaid invoice balance</small>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card shadow-sm border-0 border-start border-4 border-success p-3 bg-white kpi-card kpi-emerald">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="text-muted small text-uppercase fw-semibold">Total Paid</div>
-                    <div class="h3 fw-bold text-success mb-0">${{ total_paid }}</div>
-                    <small class="text-muted">Lifetime settled payments</small>
-                </div>
-                <div class="bg-success-subtle p-3 rounded-circle text-success">
-                    <i class="bi bi-check-circle-fill fs-4"></i>
-                </div>
-            </div>
+        <div class="card p-3 h-100">
+            <div class="text-muted small text-uppercase fw-semibold">Total Paid</div>
+            <div class="h3 fw-bold mb-0 mt-1">${{ total_paid }}</div>
+            <small class="text-muted">Lifetime settled payments</small>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card shadow-sm border-0 border-start border-4 border-warning p-3 bg-white kpi-card kpi-amber">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="text-muted small text-uppercase fw-semibold">Overdue Invoices</div>
-                    <div class="h3 fw-bold text-warning mb-0">{{ overdue_count }}</div>
-                    <small class="text-muted">Past payment due date</small>
-                </div>
-                <div class="bg-warning-subtle p-3 rounded-circle text-warning">
-                    <i class="bi bi-clock-history fs-4"></i>
-                </div>
-            </div>
+        <div class="card p-3 h-100">
+            <div class="text-muted small text-uppercase fw-semibold">Overdue Invoices</div>
+            <div class="h3 fw-bold text-danger mb-0 mt-1">{{ overdue_count }}</div>
+            <small class="text-muted">Past payment due date</small>
         </div>
     </div>
 </div>
@@ -125,21 +104,21 @@
                         </td>
                         <td>
                             {% if inv.status == 'Paid' %}
-                                <span class="badge bg-success">Paid</span>
+                                <span class="badge badge-paid">Paid</span>
                             {% elif inv.status == 'Confirmed' %}
-                                <span class="badge bg-primary">Confirmed</span>
+                                <span class="badge badge-confirmed">Confirmed</span>
                             {% elif inv.status == 'Cancelled' %}
-                                <span class="badge bg-secondary">Cancelled</span>
+                                <span class="badge badge-cancelled">Cancelled</span>
                             {% else %}
-                                <span class="badge bg-light text-dark border">Draft</span>
+                                <span class="badge badge-draft">Draft</span>
                             {% endif %}
 
                             {% if inv.is_overdue %}
-                                <span class="badge bg-danger ms-1">Overdue</span>
+                                <span class="badge badge-overdue ms-1">Overdue</span>
                             {% endif %}
                         </td>
                         <td class="fw-bold">${{ inv.total }}</td>
-                        <td class="fw-bold {% if inv.outstanding_balance > 0 %}text-danger{% else %}text-success{% endif %}">
+                        <td class="fw-bold {% if inv.outstanding_balance > 0 %}text-danger{% endif %}">
                             ${{ inv.outstanding_balance }}
                         </td>
                         <td class="text-end">
@@ -156,8 +135,8 @@
                     {% empty %}
                     <tr>
                         <td colspan="8" class="text-center py-5 empty-state">
-                            <i class="bi bi-receipt-cutoff fs-1 d-block mb-2 text-primary"></i>
-                            <h5 class="fw-bold">No Invoices Found</h5>
+                            <i class="bi bi-receipt-cutoff text-muted" style="font-size: 1.5rem;"></i>
+                            <h5 class="fw-semibold mt-2 mb-1">No Invoices Found</h5>
                             <p class="text-muted small mb-0">Your statements and receipts will appear here once billing cycles are processed.</p>
                         </td>
                     </tr>

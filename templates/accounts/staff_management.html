@@ -87,7 +87,7 @@
         <div class="card shadow-sm mb-4">
             <div class="card-header bg-white fw-semibold d-flex justify-content-between align-items-center">
                 <span><i class="bi bi-people me-1"></i> Current Staff Members ({{ staff_members.count }})</span>
-                <span class="badge bg-info text-dark">Staff Role</span>
+                <span class="badge badge-draft">Staff Role</span>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -106,7 +106,7 @@
                                 <td class="fw-semibold">{{ staff.get_full_name|default:"-" }}</td>
                                 <td>{{ staff.email }}</td>
                                 <td>{{ staff.date_joined|date:"M d, Y" }}</td>
-                                <td><span class="badge bg-success">Active</span></td>
+                                <td><span class="badge badge-active">Active</span></td>
                             </tr>
                             {% empty %}
                             <tr>
@@ -122,7 +122,7 @@
         <div class="card shadow-sm">
             <div class="card-header bg-white fw-semibold d-flex justify-content-between align-items-center">
                 <span><i class="bi bi-shield-check me-1"></i> Administrators ({{ admins.count }})</span>
-                <span class="badge bg-danger">Admin Role</span>
+                <span class="badge badge-draft">Admin Role</span>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

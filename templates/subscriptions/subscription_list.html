@@ -72,22 +72,22 @@
                         <td><span class="badge bg-light text-dark border">{{ sub.plan.name }}</span></td>
                         <td>
                             {% if sub.status == 'Active' %}
-                                <span class="badge bg-success">Active</span>
+                                <span class="badge badge-active">Active</span>
                             {% elif sub.status == 'Confirmed' %}
-                                <span class="badge bg-primary">Confirmed</span>
+                                <span class="badge badge-confirmed">Confirmed</span>
                             {% elif sub.status == 'Quotation' %}
-                                <span class="badge bg-info text-dark">Quotation</span>
+                                <span class="badge badge-quotation">Quotation</span>
                             {% elif sub.status == 'Paused' %}
-                                <span class="badge bg-warning text-dark">Paused</span>
+                                <span class="badge badge-paused">Paused</span>
                             {% elif sub.status == 'Closed' %}
-                                <span class="badge bg-secondary">Closed</span>
+                                <span class="badge badge-closed">Closed</span>
                             {% else %}
-                                <span class="badge bg-light text-dark border">Draft</span>
+                                <span class="badge badge-draft">Draft</span>
                             {% endif %}
                         </td>
                         <td>{{ sub.start_date|date:"M d, Y" }}</td>
                         <td>{{ sub.next_billing_date|date:"M d, Y"|default:"-" }}</td>
-                        <td class="fw-bold text-primary">${{ sub.total_recurring_amount }}</td>
+                        <td class="fw-bold">${{ sub.total_recurring_amount }}</td>
                         <td class="text-end">
                             <a href="{% url 'subscriptions:subscription_detail' sub.pk %}" class="btn btn-sm btn-outline-primary">
                                 View
@@ -97,8 +97,8 @@
                     {% empty %}
                     <tr>
                         <td colspan="8" class="text-center py-5 empty-state">
-                            <i class="bi bi-collection-play fs-1 d-block mb-2 text-primary"></i>
-                            <h5 class="fw-bold">No Subscriptions Found</h5>
+                            <i class="bi bi-collection-play text-muted" style="font-size: 1.5rem;"></i>
+                            <h5 class="fw-semibold mt-2 mb-1">No Subscriptions Found</h5>
                             <p class="text-muted small mb-0">No customer subscriptions matched your query or filter criteria.</p>
                         </td>
                     </tr>

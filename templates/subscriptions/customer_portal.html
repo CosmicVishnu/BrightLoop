@@ -18,48 +18,27 @@
     </div>
 </div>
 
-<!-- Summary Metrics: KPI Tiles with Thick Coloured Borders -->
+<!-- Summary Metrics: Identical Neutral Cards -->
 <div class="row g-3 mb-4">
     <div class="col-md-4">
-        <div class="card shadow-sm p-3 bg-white border-0 border-start border-4 border-primary kpi-card kpi-violet">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="text-muted small text-uppercase fw-semibold">Total Subscriptions</div>
-                    <div class="h3 fw-bold text-primary mb-0">{{ total_subs_count }}</div>
-                    <small class="text-muted">All subscription contracts</small>
-                </div>
-                <div class="bg-primary-subtle p-3 rounded-circle text-primary">
-                    <i class="bi bi-collection-play fs-4"></i>
-                </div>
-            </div>
+        <div class="card p-3 h-100">
+            <div class="text-muted small text-uppercase fw-semibold">Total Subscriptions</div>
+            <div class="h3 fw-bold mb-0 mt-1">{{ total_subs_count }}</div>
+            <small class="text-muted">All subscription contracts</small>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card shadow-sm p-3 bg-white border-0 border-start border-4 border-success kpi-card kpi-emerald">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="text-muted small text-uppercase fw-semibold">Active Subscriptions</div>
-                    <div class="h3 fw-bold text-success mb-0">{{ active_subs_count }}</div>
-                    <small class="text-muted">Currently active &amp; billed</small>
-                </div>
-                <div class="bg-success-subtle p-3 rounded-circle text-success">
-                    <i class="bi bi-check-circle-fill fs-4"></i>
-                </div>
-            </div>
+        <div class="card p-3 h-100">
+            <div class="text-muted small text-uppercase fw-semibold">Active Subscriptions</div>
+            <div class="h3 fw-bold mb-0 mt-1">{{ active_subs_count }}</div>
+            <small class="text-muted">Currently active &amp; billed</small>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card shadow-sm p-3 bg-white border-0 border-start border-4 border-warning kpi-card kpi-amber">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="text-muted small text-uppercase fw-semibold">Quotations Pending</div>
-                    <div class="h3 fw-bold text-warning mb-0">{{ quotation_count }}</div>
-                    <small class="text-muted">Awaiting confirmation</small>
-                </div>
-                <div class="bg-warning-subtle p-3 rounded-circle text-warning">
-                    <i class="bi bi-file-earmark-text fs-4"></i>
-                </div>
-            </div>
+        <div class="card p-3 h-100">
+            <div class="text-muted small text-uppercase fw-semibold">Quotations Pending</div>
+            <div class="h3 fw-bold mb-0 mt-1">{{ quotation_count }}</div>
+            <small class="text-muted">Awaiting confirmation</small>
         </div>
     </div>
 </div>
@@ -122,23 +101,23 @@
                         <td><span class="badge bg-light text-dark border">{{ sub.plan.name }}</span></td>
                         <td>
                             {% if sub.status == 'Active' %}
-                                <span class="badge bg-success">Active</span>
+                                <span class="badge badge-active">Active</span>
                             {% elif sub.status == 'Confirmed' %}
-                                <span class="badge bg-primary">Confirmed</span>
+                                <span class="badge badge-confirmed">Confirmed</span>
                             {% elif sub.status == 'Quotation' %}
-                                <span class="badge bg-info text-dark">Quotation</span>
+                                <span class="badge badge-quotation">Quotation</span>
                             {% elif sub.status == 'Paused' %}
-                                <span class="badge bg-warning text-dark">Paused</span>
+                                <span class="badge badge-paused">Paused</span>
                             {% elif sub.status == 'Closed' %}
-                                <span class="badge bg-secondary">Closed</span>
+                                <span class="badge badge-closed">Closed</span>
                             {% else %}
-                                <span class="badge bg-light text-dark border">Draft</span>
+                                <span class="badge badge-draft">Draft</span>
                             {% endif %}
                         </td>
                         <td>{{ sub.start_date|date:"M d, Y" }}</td>
                         <td>{{ sub.next_billing_date|date:"M d, Y"|default:"-" }}</td>
                         <td><span class="small text-muted">{{ sub.payment_terms }}</span></td>
-                        <td class="fw-bold text-primary">${{ sub.total_recurring_amount }}</td>
+                        <td class="fw-bold">${{ sub.total_recurring_amount }}</td>
                         <td class="text-end">
                             <a href="{% url 'subscriptions:subscription_detail' sub.pk %}" class="btn btn-sm btn-outline-primary">
                                 <i class="bi bi-eye me-1"></i> View
@@ -148,8 +127,8 @@
                     {% empty %}
                     <tr>
                         <td colspan="8" class="text-center py-5 empty-state">
-                            <i class="bi bi-box-seam fs-1 d-block mb-2 text-primary"></i>
-                            <h5 class="fw-bold">No Subscriptions Found</h5>
+                            <i class="bi bi-box-seam text-muted" style="font-size: 1.5rem;"></i>
+                            <h5 class="fw-semibold mt-2 mb-1">No Subscriptions Found</h5>
                             <p class="text-muted small mb-3">Explore our software packages and get started with a customized plan today.</p>
                             <a href="{% url 'subscriptions:browse_plans' %}" class="btn btn-primary btn-sm">
                                 <i class="bi bi-plus-circle me-1"></i> Browse Plans

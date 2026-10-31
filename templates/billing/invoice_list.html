@@ -73,21 +73,21 @@
                         <td class="small">{{ inv.period_start|date:"M d, Y" }} &rarr; {{ inv.period_end|date:"M d, Y" }}</td>
                         <td>
                             {{ inv.due_date|date:"M d, Y" }}
-                            {% if inv.is_overdue %}<span class="badge bg-danger ms-1">Overdue</span>{% endif %}
+                            {% if inv.is_overdue %}<span class="badge badge-overdue ms-1">Overdue</span>{% endif %}
                         </td>
                         <td>
                             {% if inv.status == 'Paid' %}
-                                <span class="badge bg-success">Paid</span>
+                                <span class="badge badge-paid">Paid</span>
                             {% elif inv.status == 'Confirmed' %}
-                                <span class="badge bg-primary">Confirmed</span>
+                                <span class="badge badge-confirmed">Confirmed</span>
                             {% elif inv.status == 'Cancelled' %}
-                                <span class="badge bg-danger">Cancelled</span>
+                                <span class="badge badge-cancelled">Cancelled</span>
                             {% else %}
-                                <span class="badge bg-secondary">Draft</span>
+                                <span class="badge badge-draft">Draft</span>
                             {% endif %}
                         </td>
                         <td class="fw-bold">${{ inv.total }}</td>
-                        <td class="fw-bold {% if inv.outstanding_balance > 0 %}text-danger{% else %}text-success{% endif %}">
+                        <td class="fw-bold {% if inv.outstanding_balance > 0 %}text-danger{% endif %}">
                             ${{ inv.outstanding_balance }}
                         </td>
                         <td class="text-end">
@@ -97,8 +97,8 @@
                     {% empty %}
                     <tr>
                         <td colspan="9" class="text-center py-5 empty-state">
-                            <i class="bi bi-receipt fs-1 d-block mb-2 text-primary"></i>
-                            <h5 class="fw-bold">No Invoices Found</h5>
+                            <i class="bi bi-receipt text-muted" style="font-size: 1.5rem;"></i>
+                            <h5 class="fw-semibold mt-2 mb-1">No Invoices Found</h5>
                             <p class="text-muted small mb-0">No billing invoices found matching your search or filter parameters.</p>
                         </td>
                     </tr>

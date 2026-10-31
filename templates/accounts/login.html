@@ -3,61 +3,59 @@
 {% block title %}Login - Brightloop Software{% endblock %}
 
 {% block content %}
-<div class="auth-wrapper my-2">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-6 col-lg-5 col-xl-4">
-            <div class="card shadow-lg border-0 auth-card">
-                <div class="card-header text-white text-center py-4" style="background: linear-gradient(90deg, #7C3AED 0%, #EC4899 100%); border-bottom: none;">
-                    <div class="mb-2"><i class="bi bi-shield-lock-fill fs-2 text-white"></i></div>
-                    <h4 class="mb-0 fw-bold text-white">Sign In</h4>
-                    <small class="text-white-50">Brightloop Subscription Portal</small>
+<div class="row justify-content-center align-items-center py-4">
+    <div class="col-md-5 col-lg-4">
+        <div class="card p-2">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold mb-1" style="color: #1F2937;">Sign In</h3>
+                    <p class="text-muted small mb-0">Brightloop Subscription Portal</p>
                 </div>
-                <div class="card-body p-4 bg-white">
-                    <form method="post" novalidate>
-                        {% csrf_token %}
-                        {% if form.non_field_errors %}
-                            <div class="alert alert-danger py-2">
-                                {% for error in form.non_field_errors %}
-                                    <div>{{ error }}</div>
-                                {% endfor %}
-                            </div>
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger py-2">
+                            {% for error in form.non_field_errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
                         {% endif %}
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="{{ form.email.id_for_label }}" class="form-label fw-semibold">Email Address</label>
-                            {{ form.email }}
-                            {% if form.email.errors %}
-                                <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
-                            {% endif %}
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label for="{{ form.password.id_for_label }}" class="form-label mb-0">Password</label>
+                            <a href="{% url 'accounts:password_reset' %}" class="small">Forgot password?</a>
                         </div>
+                        {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="text-danger small mt-1">{{ form.password.errors.0 }}</div>
+                        {% endif %}
+                    </div>
 
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <label for="{{ form.password.id_for_label }}" class="form-label fw-semibold mb-0">Password</label>
-                                <a href="{% url 'accounts:password_reset' %}" class="small text-decoration-none" style="color: #7C3AED;">Forgot password?</a>
-                            </div>
-                            {{ form.password }}
-                            {% if form.password.errors %}
-                                <div class="text-danger small mt-1">{{ form.password.errors.0 }}</div>
-                            {% endif %}
-                        </div>
-
-                        <div class="d-grid mt-4">
-                            <button type="submit" class="btn btn-primary fw-semibold py-2">Sign In</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center py-3 small" style="background-color: #FAF5FF; color: #7C6A9C;">
-                    New customer? <a href="{% url 'accounts:signup' %}" class="fw-semibold text-primary">Create an account</a>
-                </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary py-2">Sign In</button>
+                    </div>
+                </form>
             </div>
+            <div class="card-footer bg-white border-top text-center py-3 small text-muted">
+                New customer? <a href="{% url 'accounts:signup' %}" class="fw-semibold">Create an account</a>
+            </div>
+        </div>
 
-            <div class="card mt-3 border-0 shadow-sm" style="background-color: #FFFFFF;">
-                <div class="card-body p-3 small" style="color: #7C6A9C;">
-                    <div class="fw-bold mb-1 text-primary"><i class="bi bi-info-circle me-1"></i>Demo Accounts:</div>
-                    <div>Admin: <code>admin@brightloop.com</code> / <code>Admin@1234</code></div>
-                    <div>Staff: <code>staff@brightloop.com</code> / <code>Staff@1234</code></div>
-                </div>
+        <div class="card mt-3">
+            <div class="card-body p-3 small text-muted">
+                <div class="fw-semibold mb-1" style="color: #374151;"><i class="bi bi-info-circle me-1"></i>Demo Accounts:</div>
+                <div>Admin: <code>admin@brightloop.com</code> / <code>Admin@1234</code></div>
+                <div>Staff: <code>staff@brightloop.com</code> / <code>Staff@1234</code></div>
             </div>
         </div>
     </div>

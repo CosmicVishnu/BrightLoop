@@ -18,39 +18,38 @@
     </div>
 </div>
 
-<!-- KPI Cards -->
-<!-- KPI Cards: All 5 Summary Metrics with 5 Palette Colours -->
+<!-- KPI Cards: All Identical Neutral Cards -->
 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-3 mb-4">
     <div class="col">
-        <div class="card shadow-sm border-0 border-start border-4 border-success p-3 bg-white h-100 kpi-card kpi-emerald">
+        <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Active Subscriptions</div>
-            <div class="h3 fw-bold text-success mb-0 mt-1">{{ active_subscriptions_count }}</div>
+            <div class="h3 fw-bold mb-0 mt-1">{{ active_subscriptions_count }}</div>
             <small class="text-muted">Live contracts</small>
         </div>
     </div>
     <div class="col">
-        <div class="card shadow-sm border-0 border-start border-4 border-primary p-3 bg-white h-100 kpi-card kpi-violet">
+        <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Revenue Collected</div>
-            <div class="h3 fw-bold text-primary mb-0 mt-1">${{ total_revenue_collected }}</div>
+            <div class="h3 fw-bold mb-0 mt-1">${{ total_revenue_collected }}</div>
             <small class="text-muted">Total cash receipts</small>
         </div>
     </div>
     <div class="col">
-        <div class="card shadow-sm border-0 border-start border-4 border-info p-3 bg-white h-100 kpi-card kpi-teal">
+        <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Payments</div>
-            <div class="h3 fw-bold text-info mb-0 mt-1">{{ total_payments_count }}</div>
+            <div class="h3 fw-bold mb-0 mt-1">{{ total_payments_count }}</div>
             <small class="text-muted">Transactions settled</small>
         </div>
     </div>
     <div class="col">
-        <div class="card shadow-sm border-0 border-start border-4 border-warning p-3 bg-white h-100 kpi-card kpi-amber">
+        <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Outstanding</div>
-            <div class="h3 fw-bold text-warning mb-0 mt-1">${{ total_outstanding }}</div>
+            <div class="h3 fw-bold text-danger mb-0 mt-1">${{ total_outstanding }}</div>
             <small class="text-muted">Uncollected receivables</small>
         </div>
     </div>
     <div class="col">
-        <div class="card shadow-sm border-0 border-start border-4 border-danger p-3 bg-white h-100 kpi-card kpi-coral">
+        <div class="card p-3 h-100">
             <div class="text-muted small text-uppercase fw-semibold">Overdue Invoices</div>
             <div class="h3 fw-bold text-danger mb-0 mt-1">{{ overdue_invoices_count }}</div>
             <small class="text-muted">Past payment terms</small>
@@ -59,13 +58,13 @@
 </div>
 
 <!-- Overdue Invoices Section -->
-<div class="card shadow-sm">
+<div class="card mb-4">
     <div class="card-header bg-white py-3">
         <div class="d-flex justify-content-between align-items-center">
-            <h5 class="fw-bold mb-0 text-danger">
-                <i class="bi bi-alarm-fill me-1"></i> Overdue Invoices (Action Required)
+            <h5 class="fw-bold mb-0">
+                <i class="bi bi-exclamation-circle text-danger me-1"></i> Overdue Invoices
             </h5>
-            <span class="badge bg-danger">{{ page_obj.paginator.count }} overdue</span>
+            <span class="badge badge-cancelled">{{ page_obj.paginator.count }} overdue</span>
         </div>
     </div>
 
@@ -148,9 +147,9 @@
                         </td>
                         <td>
                             {% if inv.status == 'Confirmed' %}
-                                <span class="badge bg-primary">Confirmed</span>
+                                <span class="badge badge-confirmed">Confirmed</span>
                             {% else %}
-                                <span class="badge bg-secondary">Draft</span>
+                                <span class="badge badge-draft">Draft</span>
                             {% endif %}
                         </td>
                         <td>${{ inv.total }}</td>
@@ -164,8 +163,8 @@
                     {% empty %}
                     <tr>
                         <td colspan="8" class="text-center py-5 empty-state">
-                            <i class="bi bi-shield-check fs-1 d-block mb-2 text-success"></i>
-                            <h5 class="fw-bold">No Overdue Invoices</h5>
+                            <i class="bi bi-shield-check text-muted" style="font-size: 1.5rem;"></i>
+                            <h5 class="fw-semibold mt-2 mb-1">No Overdue Invoices</h5>
                             <p class="text-muted small mb-0">All customer invoices are settled or within payment terms.</p>
                         </td>
                     </tr>
